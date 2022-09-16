@@ -1,3 +1,5 @@
+
+
 import 'package:demotimer/UI/home_page.dart';
 import 'package:demotimer/model/excercise_model.dart';
 import 'package:demotimer/repo/resistance_details.dart';
@@ -11,9 +13,14 @@ class ExcerciseScreen extends StatefulWidget {
 }
 
 class _ExcerciseScreenState extends State<ExcerciseScreen> {
-  late ExerciseListModel exerciseListModel;
+  ExerciseListModel exerciseListModel = ExerciseListModel();
+
+
+  ExerciseRepo exerciseRepo =  ExerciseRepo();
+
   apiCall() async {
-    exerciseListModel = await ExerciseRepo().getResistanceData();
+    exerciseListModel = await exerciseRepo.getResistanceData();
+    setState(() {});
   }
 
   @override
@@ -24,19 +31,29 @@ class _ExcerciseScreenState extends State<ExcerciseScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double  w =   MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("RESISTANCE"),
+      ),
       body: ListView.builder(
           shrinkWrap: true,
           itemCount: exerciseListModel.exercise?.length,
           itemBuilder: (context, i) {
             return ListView.builder(
               shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: exerciseListModel.exercise![i].sub?.length,
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
+                    );
                   },
                   child: Card(
                     child: Row(children: [
@@ -49,8 +66,12 @@ class _ExcerciseScreenState extends State<ExcerciseScreen> {
                       const SizedBox(
                         width: 20,
                       ),
-                      Text(
-                          "${exerciseListModel.exercise![i].sub![index].name}"),
+                      SizedBox(
+                        width: w*0.3,
+                        child: Text(
+                         textScaleFactor: 0.85,
+                        "${exerciseListModel.exercise![i].sub![index].name}"),
+                      ),
                     ]),
                   ),
                 );

@@ -52,12 +52,15 @@ class _CustomTimerState extends State<CustomTimer> {
           onPressed: () {
             isTimeStart.value = true;
 
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const HomeScreen(),
-                ),
-                (route) => false);
+
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> const  HomeScreen()));
+
+            // Navigator.pushAndRemoveUntil(
+            //     context,
+            //     MaterialPageRoute(
+            //       builder: (context) => const HomeScreen(),
+            //     ),
+            //     (route) => false);
           },
           child: const Icon(
             Icons.arrow_back_ios_new,
@@ -67,6 +70,7 @@ class _CustomTimerState extends State<CustomTimer> {
         ),
       ),
       body: Center(
+
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

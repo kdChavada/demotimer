@@ -1,6 +1,8 @@
 import 'package:demotimer/UI/excercise_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'UI/chat_audio/chat_record.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -15,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ExcerciseScreen(),
+     // home: ExcerciseScreen(),
+      home: const ChatRecordAudio(),
     );
   }
 }

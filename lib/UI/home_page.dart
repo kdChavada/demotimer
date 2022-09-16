@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:demotimer/UI/excercise_screen.dart';
 import 'package:demotimer/UI/second_screen_timer.dart';
 import 'package:demotimer/constant.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final _maxSeconds = int.parse(storeTime);
   int _currentSecond = 0;
-  late Timer _timer;
+  Timer? _timer;
 
   String get _timerText {
     const secondsPerMinute = 60;
@@ -35,12 +36,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    isTimeStart.value == true ?   _startTimer() : null;
+    isTimeStart.value == true ? _startTimer() : null;
   }
 
   @override
   void dispose() {
-    _timer.cancel();
+    _timer!.cancel();
     super.dispose();
   }
 
@@ -51,30 +52,46 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text("Demo Timer"),
+        leading: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ExcerciseScreen(),
+                ),
+              );
+            },
+            child: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+              size: 30,
+            )),
         actions: [
-          isTimeStart.value == true ? Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: _timerText == "00 : 00"
-                ? Container()
-                : GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const CustomTimer(),
+          isTimeStart.value == true
+              ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: _timerText == "00 : 00"
+                      ? Container()
+                      : GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const CustomTimer(),
+                              ),
+                            );
+                          },
+                          child: Center(
+                              child: Text(
+                            _timerText,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600),
+                          )),
                         ),
-                      );
-                    },
-                    child: Center(
-                        child: Text(
-                      _timerText,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600),
-                    )),
-                  ),
-          ) :  Container(),
+                )
+              : Container(),
         ],
       ),
       body: Center(
