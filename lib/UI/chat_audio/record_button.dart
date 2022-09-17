@@ -168,7 +168,6 @@ class _AudioRecorderState extends State<AudioRecorder> {
     _timer?.cancel();
     _ampTimer?.cancel();
     final path = await _audioRecorder.stop();
-
     print("---------------  PATH $path");
     myVoiceData.value.add(path!);
     myVoiceData.notifyListeners();

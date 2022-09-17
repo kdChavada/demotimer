@@ -1,3 +1,4 @@
+import 'package:demotimer/UI/chat_audio/audio_wave_form.dart';
 import 'package:demotimer/UI/chat_audio/voice_note.dart';
 import 'package:demotimer/UI/multipleImage/multiple_image.dart';
 import 'package:file_picker/file_picker.dart';
@@ -37,10 +38,17 @@ class _ChatRecordAudioState extends State<ChatRecordAudio> {
           Center(
             child: GestureDetector(
               onTap: () {
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => const VoiceNote(),
+                //   ),
+                // );
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const VoiceNote(),
+                    builder: (context) => const Home(),
                   ),
                 );
               },
@@ -71,13 +79,13 @@ class _ChatRecordAudioState extends State<ChatRecordAudio> {
               onTap: () async {
                 // Navigator.push(context, MaterialPageRoute(builder: (context)=>    const ImagePickerForGallery()));
                 // Navigator.push(context, MaterialPageRoute(builder: (context)=> const MultipleImage()));
-               // Navigator.push(context, MaterialPageRoute(builder: (context)=> const UxPickerVIew()));
-               //  Navigator.push(
-               //    context,
-               //    MaterialPageRoute(
-               //      builder: (context) => const TBCSmallScreen(),
-               //    ),
-               //  );
+                // Navigator.push(context, MaterialPageRoute(builder: (context)=> const UxPickerVIew()));
+                //  Navigator.push(
+                //    context,
+                //    MaterialPageRoute(
+                //      builder: (context) => const TBCSmallScreen(),
+                //    ),
+                //  );
                 Navigator.push(
                   context,
                   MaterialPageRoute(

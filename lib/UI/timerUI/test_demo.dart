@@ -77,24 +77,18 @@ class _NewTimerScreenDemoState extends State<NewTimerScreenDemo> {
               builder: (context, k, d) {
                 return startAndStopTimer.value == false
                     ? ElevatedButton(
-                  onPressed: () {
-                    startAndStopTimer.value = true;
-                    startAndStopTimer.notifyListeners();
-                    stop();
-                  },
-                  child: const Text(
-                    "Stop",
-                    style: TextStyle(color: Colors.red),
-                  ),
-                )
+                        onPressed: () {
+                          startAndStopTimer.value = true;
+                          startAndStopTimer.notifyListeners();
+                          stop();
+                        },
+                        child: const Text(
+                          "Stop",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      )
                     : const SizedBox();
               }),
-
-
-
-
-
-
         ],
       ),
     );

@@ -1,3 +1,4 @@
+
 import 'package:demotimer/UI/chat_audio/record_button.dart';
 import 'package:demotimer/constant.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +15,8 @@ class VoiceNote extends StatefulWidget {
 
 class _VoiceNoteState extends State<VoiceNote> {
   String? audioPath;
-
   @override
   Widget build(BuildContext context) {
-    double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(

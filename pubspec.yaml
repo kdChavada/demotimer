@@ -44,6 +44,10 @@ dependencies:
   image_picker: ^0.8.5+3
   ux_images_picker: ^1.2.16
   intl: ^0.17.0
+  audio_wave: ^0.1.4
+  audio_waveforms: ^0.1.5+1
+
+
 
 
 
